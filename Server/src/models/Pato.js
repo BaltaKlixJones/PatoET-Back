@@ -15,11 +15,6 @@ module.exports = (sequelize) => {
             allowNull: false,
            
         },
-        lastName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            
-        },
         profession: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -27,6 +22,14 @@ module.exports = (sequelize) => {
         description: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        extra : {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        otroextra : {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
         image: {
             type: DataTypes.STRING,
@@ -38,6 +41,10 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         phone: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          password : {
             type: DataTypes.STRING,
             allowNull: false,
           },

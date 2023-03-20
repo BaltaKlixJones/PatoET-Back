@@ -19,18 +19,29 @@ const getPatoHandler = async (req, res) => {
 };
 
 const postPatoHandler = async (req, res) => {
-  const { name, lastName, profession, description, image, email, phone } =
-    req.body;
+  const {
+    name,
+    profession,
+    description,
+    image,
+    extra,
+    otroextra,
+    email,
+    phone,
+    password,
+  } = req.body;
 
   try {
     const newProfessional = await postPatoController(
       name,
-      lastName,
       profession,
       description,
       image,
+      extra,
+      otroextra,
       email,
-      phone
+      phone,
+      password
     );
     !newProfessional
       ? res.status(400).json({ error: "Professional not created" })

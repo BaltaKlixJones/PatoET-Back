@@ -1,71 +1,76 @@
-const {Pato} = require("../db.js");
+const { Pato } = require("../db.js");
 
 const getPatoController = async () => {
-    const pato = await Pato.findAll();
-    return pato;
-  };
+  const pato = await Pato.findAll();
+  return pato;
+};
 
-  const getIDPatoController = async (id) => {
-    const patoID = await Pato.findByPk(id);
-    return patoID;
-  };
-  const postPatoController = async (
+const getIDPatoController = async (id) => {
+  const patoID = await Pato.findByPk(id);
+  return patoID;
+};
+const postPatoController = async (
+  name,
+  profession,
+  description,
+  image,
+  extra,
+  otroextra,
+  email,
+  phone,
+  password
+) => {
+  if ((!name || !profession, !description || !password || !email )) {
+    throw Error("Missing data");
+  }
+  const pato = await Pato.create({
     name,
-    lastName,
     profession,
     description,
     image,
+    extra,
+    otroextra,
     email,
-    phone
-  ) => {
-    if ((!name || !lastName, !profession, !description)) {
-      throw Error("Missing data");
-    }
-    const pato = await Pato.create({
-        name,
-        lastName,
-        description,
-        image,
-        profession,
-        email,
-        phone
-    });
-    
-   
-    
-    return pato;
-  };
+    phone,
+    password,
+  });
 
-  const putPatoController = async (
-    id,{
-        name,
-        lastName,
-        profession,
-        description,
-        image,
-        email,
-        phone
-    
-    }, res) => {
-    const patoUpdate = await Pato.findByPk(id);
-    !patoUpdate
-      ? res.status(400).json({ error: "Pato not found" })
-      : patoUpdate.update({
-        name,
-        lastName,
-        profession,
-        description,
-        image,
-        email,
-        phone
-        });
-    return patoUpdate;
-  };
+  return pato;
+};
 
-  module.exports = {
-    getPatoController,
-    getIDPatoController,
-    postPatoController,
-    putPatoController
-    };
+const putPatoController = async (
+  id,
+  {  name,
+    profession,
+    description,
+    image,
+    extra,
+    otroextra,
+    email,
+    phone,
+    password, },
+  res
+) => {
+  const patoUpdate = await Pato.findByPk(id);
+  !patoUpdate
+    ? res.status(400).json({ error: "Pato not found" })
+    : patoUpdate.update({
+      name,
+      profession,
+      description,
+      image,
+      extra,
+      otroextra,
+      email,
+      phone,
+      password,
+      });
+  return patoUpdate;
+};
 
+module.exports = {
+  getPatoController,
+  getIDPatoController,
+  postPatoController,
+  putPatoController,
+};
