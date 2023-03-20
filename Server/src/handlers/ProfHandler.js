@@ -5,6 +5,7 @@ const {
   getIDProfessionalController,
   deleteProfessionalController
 } = require("../controllers/ProfController.js");
+
 const Professionals = require("../models/Professionals.js");
 
 const getProfessionalHandler = async (req, res) => {
@@ -30,19 +31,22 @@ const getIDProfessionalHandler = async (req, res) => {
 const postProfessionalHandler = async (req, res) => {
   const {
     name,
-    lastName,
     profession,
     description,
     image,
+    extra, 
+    otroextra,
+
   } = req.body;
 
   try {
     const newProfessional = await postProfessionalController(
-        name,
-        lastName,
-        profession,
-        description,
-        image,
+       name,
+    profession,
+    description,
+    image,
+    extra, 
+    otroextra,
     );
     !newProfessional
       ? res.status(400).json({ error: "Professional not created" })

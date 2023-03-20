@@ -20,12 +20,13 @@ const deleteProfessionalController = async (id) => {
 
 const postProfessionalController = async (
   name,
-  lastName,
-  profession,
-  description,
-  image
+    profession,
+    description,
+    image,
+    extra, 
+    otroextra,
 ) => {
-  if ((!name || !lastName, !profession, !description)) {
+  if ((!name || !profession, !description)) {
     throw Error("Missing data");
   }
   const professional = await Professional.create({
@@ -34,22 +35,30 @@ const postProfessionalController = async (
     description,
     image,
     profession,
+    extra, 
+    otroextra,
   });
   return professional;
 };
 const putProfessionalController = async (
   id,
-  { name, lastName, image, description, profession }
+  { name,
+    profession,
+    description,
+    image,
+    extra, 
+    otroextra, }
 ) => {
   const professionalUpdate = await Professional.findByPk(id);
   !professionalUpdate
     ? res.status(400).json({ error: "Professional not found" })
     : professionalUpdate.update({
-        name,
-        lastName,
-        image,
-        description,
-        profession,
+      name,
+      profession,
+      description,
+      image,
+      extra, 
+      otroextra,
       });
   return professionalUpdate;
 };
