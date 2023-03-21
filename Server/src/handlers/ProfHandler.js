@@ -41,7 +41,7 @@ const postProfessionalHandler = async (req, res) => {
 
   try {
     const newProfessional = await postProfessionalController(
-       name,
+    name,
     profession,
     description,
     image,

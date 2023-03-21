@@ -19,7 +19,7 @@ const deleteProfessionalController = async (id) => {
 };
 
 const postProfessionalController = async (
-  name,
+    name,
     profession,
     description,
     image,
@@ -31,10 +31,9 @@ const postProfessionalController = async (
   }
   const professional = await Professional.create({
     name,
-    lastName,
+    profession,
     description,
     image,
-    profession,
     extra, 
     otroextra,
   });
